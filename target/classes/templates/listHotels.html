@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations: List Hotels</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<div class="dates">
+		<b>Check-in Date : </b> <span th:text="${checkIn}"></span> <span style="margin-left: 40px;"></span>
+		<b>Check-out Date : </b> <span th:text="${checkOut}"></span> <span style="margin-left: 40px;"></span>
+		<b>City : </b> <span th:text="${city}"></span>
+	</div>
+	<br>
+		<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+		</div>
+	<br>
+	<br>
+	<div class="forms1">
+	<br>
+	<table>
+		<tr th:each="hotel : ${hotels}">
+			<td class="tdcenter">
+				<h2 class="h2"><span th:text="${hotel.name}"></span></h2>
+				<br>
+				<h3 th:text="${hotel.address}"></h3>
+				<h3>Rating : <span th:text="${hotel.rating}"></span></h3>
+				<span class="left" th:text="${hotel.description}"></span>
+				<br>
+				<br>
+				<img class="imghold" th:src="${hotel.imageURL}" />
+				<br>
+				<br>
+				<form action="#" th:action="@{/hotelReservation/roomChoices}" method="post">
+				<!-- Passing following variables to /roomChoices URL -->
+					<input type="hidden" name="checkIn" th:value="${checkIn}">
+					<input type="hidden" name="checkOut" th:value="${checkOut}">
+					<input type="hidden" name="city" th:value="${city}">
+					<input type="hidden" name="customerID" th:value="${customerID}">
+					<input type="hidden" name="hotelID" th:value="${hotel.hotelID}">
+					<br>
+					<button class="submitbutton"> Make Reservation </button>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	</div>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

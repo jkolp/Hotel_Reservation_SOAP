@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations: Customer Form</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+		</div>
+	<br>
+	<br>
+	<div class="forms">
+					<form action="#" th:action="@{/hotelReservation/dateCityForm}" th:object="${customerInfo}" method="post">
+						<table>
+							<col>
+							<colgroup span="2"></colgroup>
+							<thead>
+								<tr>
+								<th colspan="2" scope="colgroup"><h2 class="h2ci">Customer Form</h2><br><br></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>First Name</td>							
+									<td>&nbsp;&nbsp;&nbsp;<input class="h1dcfb1" type="text" th:field="*{firstName}" id="firstName"/></td>
+								</tr> 
+								<tr>
+									<td>Last Name</td>							
+									<td>&nbsp;&nbsp;&nbsp;<input class="h1dcfb1" type="text" th:field="*{lastName}" id="lastName"/></td>
+								</tr>
+								<tr>
+									<td>Email</td>
+									<td>&nbsp;&nbsp;&nbsp;<input class="h1dcfb1" type="email" th:field="*{email}" id="email"/></td>
+								</tr>
+								<tr><td></td></tr>
+								<tr>
+									<th colspan="2" scope="colgroup"><input class="submitbutton" type="submit" value="Submit" /></th>
+								</tr>
+							</tbody>
+						</table>
+						    
+					</form>
+				</div>
+			
+	</div>
+</body>
+</html>

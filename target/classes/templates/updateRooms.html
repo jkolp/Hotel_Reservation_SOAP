@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations: Room Choice</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<div class="dates1">
+		<b>Check-in Date : </b> <span th:text="${checkIn}"></span> <span style="margin-left: 40px;"></span>
+		<b>Check-out Date : </b> <span th:text="${checkOut}"></span> <span style="margin-left: 40px;"></span>
+		<b>City : </b> <span th:text="${city}"></span> <span style="margin-left: 40px;"></span>
+		<b>Hotel : </b>  <span th:text="${hotel.name}"></span> <span style="margin-left: 40px;"></span>
+	</div>
+	<br>
+	<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+		</div>
+	<br>
+	<br>
+	<div class="forms1">
+	<br>
+	<h2 class="h2ci">Update Room Choices</h2>
+	<br>
+	<h3 style="color: white;"> *Pick room quantity and click "Make Reservation" button </h3>
+	<form action="#" th:action="@{/hotelReservation/updateConfirmation}" method="post">
+	<!-- Passing following variables to /roomChoices URL -->
+		<input type="hidden"  name="checkIn" th:value="${checkIn}">
+		<input type="hidden" name="checkOut" th:value="${checkOut}" >
+		<input type="hidden" name="city" th:value="${city}">
+		<input type="hidden" name="customerID" th:value="${customerID}" >
+		<input type="hidden" name="hotelID" th:value="${hotel.hotelID}" >
+		<input type="hidden" name="resID" th:value="${resID}" >
+		<br>
+		<button class="submitbutton"> Make Reservation </button>
+		<br>
+		<br>
+		<table>
+		<tr>
+			<td class="tdcenter"><h2 class="h2a"><span th:text="${hotel.name}"></span></h2></td>
+		</tr>
+		<tr th:each="room : ${rooms}">
+			<td style="text-align: center;">
+				<div class="display1">
+				<h3 class="h2ci2"><span th:text="${room.type}"></span>  $<span th:text="${room.price}"></span></h3>
+				</div>
+				<br>
+						
+				<div class="display2">
+					<img class="imghold" th:src="${room.imageURL}" />
+					<img class="imghold" th:src="${room.imageURL_2}" /><br/><br/>
+				</div>
+				<h3>Room Quantity :
+					<select class="h1dcfb" name="numRooms">
+						<option class="h1dcfb" value=0>0</option>
+						<option class="h1dcfb" value=1>1</option>
+						<option class="h1dcfb" value=2>2</option>
+						<option class="h1dcfb" value=3>3</option>
+						<option class="h1dcfb" value=4>4</option>
+						<option class="h1dcfb" value=5>5</option>
+					</select>
+				</h3>
+					<input type="hidden" name="roomID" th:value="${room.roomID}">
+				<br>
+			</td>
+		</tr>
+		</table>
+		<br>
+		<br>
+		<button class="submitbutton"> Make Reservation </button>
+		<br>
+		<br>
+	</form>
+	</div>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

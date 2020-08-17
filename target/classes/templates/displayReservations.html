@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations: Room Choice</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+	</div>
+	<br>
+	<br>
+	<div class="forms">
+		<table class="tabledisplay">
+			<tr>
+			<td class="h1dcfa1a">Reservation ID</td>
+			<td class="h1dcfa1a">Hotel Name</td>
+			<td class="h1dcfa1a">Hotel Address</td>
+			<td class="h1dcfa1a">Check In</td>
+			<td class="h1dcfa1a">Check Out</td>
+			<td class="h1dcfa1a">Standard Room </td>
+			<td class="h1dcfa1a">Intermediate Room</td>
+			<td class="h1dcfa1a">Luxury Room</td>
+			<td class="h1dcfa1a">Total Price</td>
+			<td class="h1dcfa1a">Cancelled</td>
+			<td class="h1dcfa1a">Past Date</td>
+			</tr>
+			<tr><td></td></tr>
+			<tr class="table" th:each="reservation : ${reservations}">
+				<td class="tdcenter1a"><span th:text="${reservation.resID}"></span> </td>
+				<td class="tdcenter1a"><span th:text="${reservation.hotelName}"></span></td>
+				<td class="tdcenter1a"><span th:text="${reservation.address}"></span></td>
+				<td class="tdcenter1a"><span th:text="${reservation.checkIn}"></span></td>
+				<td class="tdcenter1a"><span th:text="${reservation.checkOut}"></span></td>
+				<td class="tdcenter1a"> <span th:text="${reservation.numStandardRoom}"></span> </td>
+				<td class="tdcenter1a"><span th:text="${reservation.numIntermediateRoom}"></span></td>
+				<td class="tdcenter1a"><span th:text="${reservation.numLuxuryRoom}"></span></td>
+				<td class="tdcenter1a">$<span th:text="${reservation.totalPrice}"></span></td>
+				<td class="tdcenter1a" th:switch="${reservation.cancelled}">
+					<span class="tdcenter1a" th:case="0"> No </span>
+					<span class="tdcenter1a" th:case="1"> Yes </span>
+				</td>
+				<td class="tdcenter1a" th:switch="${reservation.isReservationPassed(reservation.checkOut)}">
+					<span class="tdcenter1a" th:case="true"> Yes </span>
+					<span class="tdcenter1a" th:case="false"> No </span>
+				</td>
+				<span th:switch="${reservation.cancelled}">
+				<!-- If reservation was not cancelled, check if checkOut date has passed.  -->
+				
+				<td class="tdcenter1a" th:case="0">
+					<span th:switch="${reservation.isReservationPassed(reservation.checkOut)}">
+						<div th:case="false">
+						<!-- Reservation was not cancelled or passed date. Display two buttons -->
+							<div class="tdisplay1"><form action="#" th:action="@{/hotelReservation/cancelOrUpdate}" method="post">
+								<input type="hidden" name="resID" th:value="${reservation.resID}"/>
+								<input type="hidden" name="action" value="Update"/>
+								<button class="submitbuttonRA"> Update Reservation</button>
+							</form>
+							<br>
+							<form action="#" th:action="@{/hotelReservation/cancelOrUpdate}" method="post">
+								<input type="hidden" name="resID" th:value="${reservation.resID}"/>
+								<input type="hidden" name="action" value="Cancel"/>
+								<button class="submitbuttonRA"> Cancel Reservation</button>
+							</form></div>
+						</div>
+						<div th:case="true">
+						<!-- If checkout date is passed(true) show No Action Available -->
+								<div class="tdisplay1">
+									<div class="noAction">No Action Available</div>
+								</div>
+						</div>
+						
+					</span>
+				</td>
+				<td class="tdcenter1a" th:case="1"> 
+				<!-- If the reservation is cancelled,then show No Action Available -->
+						<div class="tdisplay1">
+							<button class="noAction">No Action Available</button>
+						</div>
+				</td>
+			</tr>
+		</table> 
+		<br>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>
+

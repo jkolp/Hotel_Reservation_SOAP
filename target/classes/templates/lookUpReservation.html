@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations: Reservation Search</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+		</div>
+	<br>
+	<br>
+		<div class="forms">
+		<table>
+			<thead>
+				<tr>
+				<th>
+				<h2 class="h2ci">Update Reservation</h2></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tdcenter">
+					<br>
+					<form action="#" th:action="@{/hotelReservation/displayReservation}" method="post">
+						<input class="h1dcfb1" type="number" name="reservationID" placeholder="Enter your ID" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input class="submitbutton" type="submit" value="Look Up By ID" />
+					</form></td>
+				</tr>
+				<tr>
+					<td class="tdcenter">
+						<span class="h1dcfa1">OR</span>
+						<br>
+						<br>
+						<br>
+						<form action="#" th:action="@{/hotelReservation/displayReservation}" method="post">
+							<input class="h1dcfb1" type="email" name="reservationEmail" placeholder="Enter your email" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input class="submitbutton" type="submit" value="Look Up By Email" />
+						</form></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

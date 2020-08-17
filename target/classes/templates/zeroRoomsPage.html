@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations: List Hotels</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+		</div>
+	<br>
+	<br>
+	<br>
+		<div class="forms">
+			<table>
+				<thead>
+					<tr>
+					<th><h2 class="h2ci">No Rooms Were Chosen</h2></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td class="tdcenter">
+					<br>
+					<br>
+						<form action="#" th:action="@{/hotelReservation/roomChoices}" method="post">
+			 				<input type="hidden"  name="checkIn" th:value="${checkIn}">
+							<input type="hidden" name="checkOut" th:value="${checkOut}" >
+							<input type="hidden" name="city" th:value="${city}">
+							<input type="hidden" name="customerID" th:value="${customerID}" >
+			 				<input type="hidden" name="hotelID" th:value="${hotelID}" >
+							<button class="submitbutton">Go Back and Select Room</button>
+						</form>
+					</td>
+					</tr>
+					<tr>
+					</tr>
+					
+		 		</tbody>
+			</table>
+		 		
+		</div>
+	<br>
+	<br>
+</body>
+</html>

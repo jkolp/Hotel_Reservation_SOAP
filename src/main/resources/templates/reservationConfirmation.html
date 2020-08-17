@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations | Confirmation</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+		</div>
+	<br>
+	<br>
+	<div class="forms">
+		<table>
+			<col>
+			<colgroup span="2"></colgroup>
+			<thead>
+				<tr>
+				<th colspan="2" scope="colgroup"><h2 class="h2ci">Reservation Confirmation</h2><br><br></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tdrsrv">Reservation ID</td>
+					<td class="tdcenter1a1"><span th:text="${reservation.resID}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Name</td>
+					<td class="tdcenter1a1"><span th:text="${customer.firstName}"></span> <span th:text="${customer.lastName}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Hotel</td>
+					<td class="tdcenter1a1"><span th:text="${hotel.name}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">City</td>
+					<td class="tdcenter1a1"><span th:text="${hotel.city}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Check-In</td>
+					<td class="tdcenter1a1"><span th:text="${reservation.checkIn}"></span>	</td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Check-Out</td>
+					<td class="tdcenter1a1"><span th:text="${reservation.checkOut}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Number of Standard Room</td>
+					<td class="tdcenter1a1"><span th:text="${reservation.numStandardRoom}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Number of of Intermediate Room</td>
+					<td class="tdcenter1a1"><span th:text="${reservation.numIntermediateRoom}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Number of of Luxury Room</td>
+					<td class="tdcenter1a1"><span th:text="${reservation.numLuxuryRoom}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Price of Standard Room</td>
+					<td class="tdcenter1a1">$<span th:text="${reservation.priceStandardRoom}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Price of Intermediate Room</td>
+					<td class="tdcenter1a1">$<span th:text="${reservation.priceIntermediateRoom}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Price of Luxury Room</td>
+					<td class="tdcenter1a1">$<span th:text="${reservation.priceLuxuryRoom}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Number of Nights</td>
+					<td class="tdcenter1a1"><span th:text="${reservation.numDays}"></span></td>
+				</tr>
+				<tr>
+					<td class="tdrsrv">Total Price</td>
+					<td class="tdcenter1a1">$<span th:text="${reservation.totalPrice}"></span></td>
+				</tr>	
+			</tbody>
+		</table>
+		<br>
+			<div class="tdcenter">
+				<a class="updatereservation" href="/hotelReservation/findReservation">Update Reservation</a>
+			</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>
+

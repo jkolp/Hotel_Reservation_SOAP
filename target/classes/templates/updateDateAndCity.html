@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hotel Reservations: Date and City</title>
+<link th:href="@{/css/custom.css}" rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="banner"><a href="/hotelReservation">Hotel Reservations</a>
+		</div>
+	<br>
+	<br>
+		<div class="forms">
+			<h1 class="h1dcf">Welcome again&nbsp;<span th:text="${customerInfo.firstName}"></span> <span th:text="${customerInfo.lastName}"></span>!</h1>
+			<br>
+			<br>
+			<h1 class="h1dcf"> Please select your check-in and check-out dates </h1>
+			<form action="#" th:action="@{/hotelReservation/updateHotel}" method="post">
+				<input type="hidden" name="customerID" th:value="${customerInfo.customerID}">
+				<input type="hidden" name="resID" th:value="${resID}">
+				<br>
+				<br>
+				<span class="h1dcfa">Check In</span>&nbsp;&nbsp;&nbsp;<input class="h1dcfb" type="date" name="checkIn" th:value="${dateNow}" th:attr="min=${dateNow}" max="2025-12-31">
+				<span style="margin-left: 40px;"></span>
+				<span class="h1dcfa">Check Out</span>&nbsp;&nbsp;&nbsp;<input class="h1dcfb" type="date" name="checkOut" th:value="${dateNow}" th:attr="min=${dateNow}" max="2025-12-31">
+				<br> 
+				<br>
+				<br>
+				<span class="h1dcfa">City</span>&nbsp;&nbsp;&nbsp;
+					<select class="h1dcfb" name="city">
+    					<option class="h1dcfb" value="Honolulu"> Honolulu </option>
+    					<option class="h1dcfb" value="Monterey"> Monterey </option>
+    					<option class="h1dcfb" value="San Diego"> San Diego </option>
+	  				</select>
+				<br>
+				<br>
+				<br>
+				<input class="submitbutton" type="submit" value="Search Hotels" />
+				<br>
+				<br>
+				<br>
+			</form>
+		</div>
+</body>
+</html>
+
+<!--  <input type="hidden" name="customerInfo" th:value="${customerInfo}"> -->
